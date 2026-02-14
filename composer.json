@@ -1,0 +1,25 @@
+{
+  "name": "denosyscore/http",
+  "description": "HTTP kernel, middleware, and exception handling",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2",
+    "laminas/laminas-diactoros": "^3.6",
+    "laminas/laminas-httphandlerrunner": "^2.12",
+    "nyholm/psr7": "^1.8",
+    "psr/event-dispatcher": "^1.0",
+    "denosyscore/contracts": "^0.1",
+    "denosyscore/container": "^0.1",
+    "denosyscore/events": "^0.1",
+    "denosyscore/validation": "^0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "CFXP\\Core\\": "src/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
