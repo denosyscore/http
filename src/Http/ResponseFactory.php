@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http;
+namespace Denosys\Http;
 
-use CFXP\Core\View\ViewEngine;
-use CFXP\Core\Session\SessionInterface;
+use Denosys\View\ViewEngine;
+use Denosys\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Laminas\Diactoros\Response;

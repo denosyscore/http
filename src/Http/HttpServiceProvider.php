@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http;
+namespace Denosys\Http;
 
-use CFXP\Core\Container\ContainerInterface;
-use CFXP\Core\ServiceProviderInterface;
-use CFXP\Core\View\ViewEngine;
-use CFXP\Core\Session\SessionInterface;
-use CFXP\Core\Exceptions\NotFoundException;
+use Denosys\Container\ContainerInterface;
+use Denosys\Contracts\ServiceProviderInterface;
+use Denosys\View\ViewEngine;
+use Denosys\Session\SessionInterface;
+use Denosys\Http\Exceptions\NotFoundException;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
 /**

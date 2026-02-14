@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http;
+namespace Denosys\Http;
 
 use Throwable;
 use Denosys\Routing\Router;
-use CFXP\Core\Events\Dispatcher;
-use CFXP\Core\Container\ContainerInterface;
-use CFXP\Core\Events\ResponseReady;
-use CFXP\Core\Events\RequestHandling;
-use CFXP\Core\Events\ListenerProvider;
-use CFXP\Core\Http\Events\KernelBooted;
+use Denosys\Events\Dispatcher;
+use Denosys\Container\ContainerInterface;
+use Denosys\Events\ResponseReady;
+use Denosys\Events\RequestHandling;
+use Denosys\Events\ListenerProvider;
+use Denosys\Http\Events\KernelBooted;
 use Psr\Http\Message\ResponseInterface;
-use CFXP\Core\Http\Events\KernelBooting;
+use Denosys\Http\Events\KernelBooting;
 use Laminas\Diactoros\ServerRequestFactory;
-use CFXP\Core\Exceptions\NotFoundException;
+use Denosys\Http\Exceptions\NotFoundException;
 use Psr\Http\Message\ServerRequestInterface;
-use CFXP\Core\Exceptions\ContainerException;
+use Denosys\Http\Exceptions\ContainerException;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
-use CFXP\Core\Bootstrap\ServiceProviderBootstrapper;
-use CFXP\Core\Exceptions\ContainerResolutionException;
-use CFXP\Core\Exceptions\ExceptionHandler;
+use Denosys\Bootstrap\ServiceProviderBootstrapper;
+use Denosys\Http\Exceptions\ContainerResolutionException;
+use Denosys\Http\Exceptions\ExceptionHandler;
 
 class Kernel
 {

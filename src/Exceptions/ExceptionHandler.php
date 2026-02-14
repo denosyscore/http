@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Exceptions;
+namespace Denosys\Http\Exceptions;
 
 use Throwable;
 use Psr\Log\LoggerInterface;
@@ -108,7 +108,7 @@ class ExceptionHandler
             $this->handler = new PrettyPageHandler();
             $this->handler->setEditor(PrettyPageHandler::EDITOR_VSCODE);
 
-            $this->handler->addDataTable('CFXP', [
+            $this->handler->addDataTable('Denosys', [
                 'Version' => '1.0.0', // TODO: Replace with actual version
             ]);
 
@@ -147,7 +147,7 @@ class ExceptionHandler
     {
         http_response_code(500);
 
-        echo '<html lang="en"><head><title>CFXP Application Error</title>';
+        echo '<html lang="en"><head><title>Denosys Application Error</title>';
         echo '<style>
             body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
             .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http\Middleware;
+namespace Denosys\Http\Middleware;
 
-use CFXP\Core\Http\RedirectResponse;
-use CFXP\Core\Http\Traits\ResolvesReferer;
-use CFXP\Core\Session\SessionInterface;
-use CFXP\Core\Validation\ValidationException;
+use Denosys\Http\RedirectResponse;
+use Denosys\Http\Traits\ResolvesReferer;
+use Denosys\Session\SessionInterface;
+use Denosys\Validation\ValidationException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

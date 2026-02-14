@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http\Listeners;
+namespace Denosys\Http\Listeners;
 
 class ScreamBooting
 {

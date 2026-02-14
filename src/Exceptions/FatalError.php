@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Exceptions;
+namespace Denosys\Http\Exceptions;
 
 class FatalError extends \Error
 {

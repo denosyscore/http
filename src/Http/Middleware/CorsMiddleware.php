@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http\Middleware;
+namespace Denosys\Http\Middleware;
 
-use CFXP\Core\Config\ConfigurationInterface;
+use Denosys\Config\ConfigurationInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;

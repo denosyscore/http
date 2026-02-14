@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http;
+namespace Denosys\Http;
 
-use CFXP\Core\Validation\Validator;
-use CFXP\Core\Validation\ValidationException;
-use CFXP\Core\Http\Exceptions\AuthorizationException;
-use CFXP\Core\Container\ContainerInterface;
+use Denosys\Validation\Validator;
+use Denosys\Validation\ValidationException;
+use Denosys\Http\Exceptions\AuthorizationException;
+use Denosys\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -203,7 +203,7 @@ abstract class FormRequest
     /**
      * Get the session instance.
      */
-    public function session(): \CFXP\Core\Session\SessionInterface
+    public function session(): \Denosys\Session\SessionInterface
     {
         return $this->request->session();
     }

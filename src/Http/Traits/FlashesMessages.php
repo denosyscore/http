@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http\Traits;
+namespace Denosys\Http\Traits;
 
 use RuntimeException;
-use CFXP\Core\Session\SessionInterface;
+use Denosys\Session\SessionInterface;
 
 /**
  * Trait for responses that can flash messages to the session.

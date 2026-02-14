@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http;
+namespace Denosys\Http;
 
 use Psr\Http\Message\ResponseInterface;
 

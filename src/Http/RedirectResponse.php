@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http;
+namespace Denosys\Http;
 
 use InvalidArgumentException;
-use CFXP\Core\Http\Traits\FlashesMessages;
+use Denosys\Http\Traits\FlashesMessages;
 use Psr\Http\Message\StreamInterface;
 use Laminas\Diactoros\Response;
 

@@ -1,5 +1,5 @@
 <?php
 
-namespace CFXP\Core\Exceptions;
+namespace Denosys\Http\Exceptions;
 
 class DatabaseException extends \Exception {}

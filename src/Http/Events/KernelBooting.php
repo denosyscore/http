@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http\Events;
+namespace Denosys\Http\Events;
 
-use CFXP\Core\Container\Container;
+use Denosys\Container\Container;
 
 readonly class KernelBooting
 {

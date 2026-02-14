@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http\Traits;
+namespace Denosys\Http\Traits;
 
-use CFXP\Core\Session\SessionInterface;
+use Denosys\Session\SessionInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**

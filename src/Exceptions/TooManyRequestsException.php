@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http\Exceptions;
+namespace Denosys\Http\Exceptions;
 
 use RuntimeException;
 

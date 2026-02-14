@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http;
+namespace Denosys\Http;
 
-use CFXP\Core\Session\SessionInterface;
-use CFXP\Core\Session\SessionAttributeKeys;
+use Denosys\Session\SessionInterface;
+use Denosys\Session\SessionAttributeKeys;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 use Psr\Http\Message\StreamInterface;

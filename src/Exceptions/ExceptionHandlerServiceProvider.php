@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Exceptions;
+namespace Denosys\Http\Exceptions;
 
-use CFXP\Core\Container\ContainerInterface;
-use CFXP\Core\ServiceProviderInterface;
-use CFXP\Core\Bootstrap\Configuration\ExceptionConfiguration;
+use Denosys\Container\ContainerInterface;
+use Denosys\Contracts\ServiceProviderInterface;
+use Denosys\Bootstrap\Configuration\ExceptionConfiguration;
 use Psr\Log\LoggerInterface;
-use CFXP\Core\Environment\EnvironmentManager;
+use Denosys\Environment\EnvironmentManager;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
 class ExceptionHandlerServiceProvider implements ServiceProviderInterface

@@ -9,14 +9,16 @@
     "laminas/laminas-httphandlerrunner": "^2.12",
     "nyholm/psr7": "^1.8",
     "psr/event-dispatcher": "^1.0",
-    "denosyscore/contracts": "^0.1",
-    "denosyscore/container": "^0.1",
-    "denosyscore/events": "^0.1",
-    "denosyscore/validation": "^0.1"
+    "denosyscore/contracts": "^0.2",
+    "denosyscore/container": "^0.2",
+    "denosyscore/events": "^0.2",
+    "denosyscore/validation": "^0.2"
   },
   "autoload": {
     "psr-4": {
-      "CFXP\\Core\\": "src/"
+      "Denosys\\\\Http\\\\": "src/Http/",
+      "Denosys\\\\Http\\\\Exceptions\\\\": "src/Exceptions/",
+      "Denosys\\\\Http\\\\Security\\\\": "src/Security/"
     }
   },
   "config": {

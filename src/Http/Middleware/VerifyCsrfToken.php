@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace CFXP\Core\Http\Middleware;
+namespace Denosys\Http\Middleware;
 
-use CFXP\Core\Http\Exceptions\TokenMismatchException;
-use CFXP\Core\Session\SessionInterface;
+use Denosys\Http\Exceptions\TokenMismatchException;
+use Denosys\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
