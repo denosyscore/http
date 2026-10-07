@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Denosys\Http\Middleware;
 
+use Closure;
 use Denosys\Http\RedirectResponse;
 use Denosys\Http\Traits\ResolvesReferer;
 use Denosys\Session\SessionInterface;
@@ -16,6 +17,9 @@ use Psr\Http\Server\RequestHandlerInterface;
 class ValidationExceptionMiddleware implements MiddlewareInterface
 {
     use ResolvesReferer;
+
+    /** @var Closure(ServerRequestInterface): int|null */
+    private readonly ?Closure $redirectStatusResolver;
     
     private const SENSITIVE_FIELDS = [
         'password',
@@ -34,7 +38,12 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
 
     public function __construct(
         private readonly SessionInterface $session,
-    ) {}
+        ?callable $redirectStatusResolver = null,
+    ) {
+        $this->redirectStatusResolver = $redirectStatusResolver === null
+            ? null
+            : Closure::fromCallable($redirectStatusResolver);
+    }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
@@ -57,7 +66,7 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
         
         // Flash old input (excluding sensitive fields)
         $oldInput = $this->filterSensitiveFields($request->getParsedBody() ?? []);
-        $this->session->flash('old', $oldInput);
+        $this->session->flash('_old_input', $oldInput);
         
         // Flash the first error message for easy display
         $firstError = $e->getFirstError();
@@ -66,9 +75,50 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
         }
         
         // Get referrer URL for redirect back (using trait method)
-        $referer = $this->getRefererUrl($request, $this->session);
+        $referer = $this->safeReturnUrl(
+            $this->getRefererUrl($request, $this->session),
+            $request,
+        );
         
-        return $this->createRedirectResponse($referer);
+        $status = $this->redirectStatusResolver === null
+            ? 302
+            : ($this->redirectStatusResolver)($request);
+
+        return $this->createRedirectResponse($referer, $status);
+    }
+
+    private function safeReturnUrl(string $url, ServerRequestInterface $request): string
+    {
+        if ($url === '' || str_contains($url, '\\') || preg_match('/[\x00-\x1F\x7F]/', $url)) {
+            return '/';
+        }
+
+        $parts = parse_url($url);
+        if ($parts === false) {
+            return '/';
+        }
+
+        if (!isset($parts['scheme']) && !isset($parts['host'])) {
+            return str_starts_with($url, '/') && !str_starts_with($url, '//') ? $url : '/';
+        }
+
+        $uri = $request->getUri();
+        $scheme = strtolower($uri->getScheme());
+        $host = strtolower($uri->getHost());
+        $port = $uri->getPort() ?? ($scheme === 'https' ? 443 : 80);
+        $returnScheme = strtolower($parts['scheme'] ?? '');
+        $returnPort = $parts['port'] ?? ($returnScheme === 'https' ? 443 : 80);
+
+        if (!in_array($returnScheme, ['http', 'https'], true)
+            || $returnScheme !== $scheme
+            || strtolower($parts['host'] ?? '') !== $host
+            || $returnPort !== $port
+            || isset($parts['user'])
+            || isset($parts['pass'])) {
+            return '/';
+        }
+
+        return $url;
     }
 
     /**
@@ -118,8 +168,8 @@ private function filterSensitiveFields(array $data): array
     /**
      * Create a redirect response.
      */
-    private function createRedirectResponse(string $url): ResponseInterface
+    private function createRedirectResponse(string $url, int $status): ResponseInterface
     {
-        return new RedirectResponse($url, 302);
+        return new RedirectResponse($url, $status);
     }
 }
