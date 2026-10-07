@@ -57,7 +57,7 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
         
         // Flash old input (excluding sensitive fields)
         $oldInput = $this->filterSensitiveFields($request->getParsedBody() ?? []);
-        $this->session->flash('old', $oldInput);
+        $this->session->flash('_old_input', $oldInput);
         
         // Flash the first error message for easy display
         $firstError = $e->getFirstError();
@@ -66,9 +66,49 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
         }
         
         // Get referrer URL for redirect back (using trait method)
-        $referer = $this->getRefererUrl($request, $this->session);
+        $referer = $this->safeReturnUrl(
+            $this->getRefererUrl($request, $this->session),
+            $request,
+        );
         
-        return $this->createRedirectResponse($referer);
+        $isInertiaMutation = $request->getHeaderLine('X-Inertia') === 'true'
+            && !in_array(strtoupper($request->getMethod()), ['GET', 'HEAD', 'OPTIONS'], true);
+
+        return $this->createRedirectResponse($referer, $isInertiaMutation ? 303 : 302);
+    }
+
+    private function safeReturnUrl(string $url, ServerRequestInterface $request): string
+    {
+        if ($url === '' || str_contains($url, '\\') || preg_match('/[\x00-\x1F\x7F]/', $url)) {
+            return '/';
+        }
+
+        $parts = parse_url($url);
+        if ($parts === false) {
+            return '/';
+        }
+
+        if (!isset($parts['scheme']) && !isset($parts['host'])) {
+            return str_starts_with($url, '/') && !str_starts_with($url, '//') ? $url : '/';
+        }
+
+        $uri = $request->getUri();
+        $scheme = strtolower($uri->getScheme());
+        $host = strtolower($uri->getHost());
+        $port = $uri->getPort() ?? ($scheme === 'https' ? 443 : 80);
+        $returnScheme = strtolower($parts['scheme'] ?? '');
+        $returnPort = $parts['port'] ?? ($returnScheme === 'https' ? 443 : 80);
+
+        if (!in_array($returnScheme, ['http', 'https'], true)
+            || $returnScheme !== $scheme
+            || strtolower($parts['host'] ?? '') !== $host
+            || $returnPort !== $port
+            || isset($parts['user'])
+            || isset($parts['pass'])) {
+            return '/';
+        }
+
+        return $url;
     }
 
     /**
@@ -118,8 +158,8 @@ private function filterSensitiveFields(array $data): array
     /**
      * Create a redirect response.
      */
-    private function createRedirectResponse(string $url): ResponseInterface
+    private function createRedirectResponse(string $url, int $status): ResponseInterface
     {
-        return new RedirectResponse($url, 302);
+        return new RedirectResponse($url, $status);
     }
 }

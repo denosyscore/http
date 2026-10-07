@@ -43,6 +43,20 @@ malformed or scalar JSON returns a JSON `400` response. Seekable request-body
 streams retain their cursor position after parsing. An unreadable request-body
 stream returns a JSON `500` response rather than being treated as empty input.
 
+## Validation failure redirects
+
+`Denosys\Http\Middleware\ValidationExceptionMiddleware` requires the session
+interface supplied by `denosyscore/session`. It flashes field errors under
+`errors` and non-sensitive old input under `_old_input`, the key read by
+`Denosys\Http\Request::old()`. Return URLs from the `Referer` header or
+session are accepted only when they are local paths or match the request's
+scheme, host, and port; otherwise the redirect falls back to `/`.
+
+Validation failures redirect with `302` by default. Requests carrying
+`X-Inertia: true` use `303` after a mutation method so the follow-up request
+is a GET. Applications can register a different exception middleware when
+they need a JSON error response or a different return-URL policy.
+
 ## Development
 
 composer validate --strict
