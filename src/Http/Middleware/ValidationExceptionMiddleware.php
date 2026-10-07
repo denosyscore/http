@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Denosys\Http\Middleware;
 
+use Closure;
 use Denosys\Http\RedirectResponse;
 use Denosys\Http\Traits\ResolvesReferer;
 use Denosys\Session\SessionInterface;
@@ -16,6 +17,9 @@ use Psr\Http\Server\RequestHandlerInterface;
 class ValidationExceptionMiddleware implements MiddlewareInterface
 {
     use ResolvesReferer;
+
+    /** @var Closure(ServerRequestInterface): int|null */
+    private readonly ?Closure $redirectStatusResolver;
     
     private const SENSITIVE_FIELDS = [
         'password',
@@ -34,7 +38,12 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
 
     public function __construct(
         private readonly SessionInterface $session,
-    ) {}
+        ?callable $redirectStatusResolver = null,
+    ) {
+        $this->redirectStatusResolver = $redirectStatusResolver === null
+            ? null
+            : Closure::fromCallable($redirectStatusResolver);
+    }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
@@ -71,10 +80,11 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
             $request,
         );
         
-        $isInertiaMutation = $request->getHeaderLine('X-Inertia') === 'true'
-            && !in_array(strtoupper($request->getMethod()), ['GET', 'HEAD', 'OPTIONS'], true);
+        $status = $this->redirectStatusResolver === null
+            ? 302
+            : ($this->redirectStatusResolver)($request);
 
-        return $this->createRedirectResponse($referer, $isInertiaMutation ? 303 : 302);
+        return $this->createRedirectResponse($referer, $status);
     }
 
     private function safeReturnUrl(string $url, ServerRequestInterface $request): string

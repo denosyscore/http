@@ -52,10 +52,13 @@ interface supplied by `denosyscore/session`. It flashes field errors under
 session are accepted only when they are local paths or match the request's
 scheme, host, and port; otherwise the redirect falls back to `/`.
 
-Validation failures redirect with `302` by default. Requests carrying
-`X-Inertia: true` use `303` after a mutation method so the follow-up request
-is a GET. Applications can register a different exception middleware when
-they need a JSON error response or a different return-URL policy.
+Validation failures redirect with `302` by default. The optional second
+constructor argument accepts a callable that receives the PSR-7 request and
+returns a redirect status code. For example, an application can return `303`
+for its chosen mutation requests while leaving other requests at `302`.
+`RedirectResponse` validates the returned status code. Applications can
+register a different exception middleware when they need a JSON error
+response or a different return-URL policy.
 
 ## Development
 

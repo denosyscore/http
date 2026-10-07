@@ -18,7 +18,7 @@ if (!interface_exists(SessionInterface::class)) {
 
 final class ValidationExceptionMiddlewareTest extends TestCase
 {
-    public function testInertiaMutationRejectsExternalRefererAndFlashesReadableOldInput(): void
+    public function testConfiguredStatusRejectsExternalRefererAndFlashesReadableOldInput(): void
     {
         $flashes = [];
         $session = $this->createMock(SessionInterface::class);
@@ -31,10 +31,13 @@ final class ValidationExceptionMiddlewareTest extends TestCase
 
         $request = (new ServerRequest([], [], 'https://example.test/submit', 'POST'))
             ->withHeader('Referer', 'https://other.test/steal')
-            ->withHeader('X-Inertia', 'true')
             ->withParsedBody(['email' => 'invalid', 'password' => 'secret']);
 
-        $response = (new ValidationExceptionMiddleware($session))->process($request, $this->failingHandler());
+        $middleware = new ValidationExceptionMiddleware(
+            $session,
+            static fn (ServerRequestInterface $request): int => $request->getMethod() === 'POST' ? 303 : 302,
+        );
+        $response = $middleware->process($request, $this->failingHandler());
 
         self::assertSame(303, $response->getStatusCode());
         self::assertSame('/', $response->getHeaderLine('Location'));
