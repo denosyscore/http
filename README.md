@@ -29,6 +29,19 @@ The existing `SecurityHeadersServiceProvider` remains available for consumers
 that rely on native SAPI headers. Direct kernel handling and alternate emitters
 receive the policy through the returned response object.
 
+## JSON request bodies
+
+`Denosys\Http\Middleware\JsonBodyParserMiddleware` is an opt-in PSR-15
+middleware. Register it before CSRF checks and request validation so JSON
+object and array bodies become available through `getParsedBody()` and
+`Denosys\Http\Request::input()`. It accepts `application/json` (including
+charset parameters) and `application/*+json` media types.
+
+The middleware leaves non-JSON and already populated parsed bodies unchanged.
+An empty JSON body is left for the application's normal validation rules;
+malformed or scalar JSON returns a JSON `400` response. Seekable request-body
+streams retain their cursor position after parsing.
+
 ## Development
 
 composer validate --strict
