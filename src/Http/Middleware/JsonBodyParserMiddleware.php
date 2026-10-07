@@ -10,6 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 
 final class JsonBodyParserMiddleware implements MiddlewareInterface
 {
@@ -25,10 +26,17 @@ final class JsonBodyParserMiddleware implements MiddlewareInterface
         }
 
         $stream = $request->getBody();
-        $position = $stream->isSeekable() ? $stream->tell() : null;
+        $position = null;
 
         try {
-            $body = (string) $stream;
+            if ($stream->isSeekable()) {
+                $position = $stream->tell();
+                $stream->rewind();
+            }
+
+            $body = $stream->getContents();
+        } catch (RuntimeException) {
+            return new JsonResponse(['error' => 'Unable to read request body.'], 500);
         } finally {
             if ($position !== null) {
                 $stream->seek($position);

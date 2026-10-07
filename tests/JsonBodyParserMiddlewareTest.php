@@ -156,6 +156,26 @@ final class JsonBodyParserMiddlewareTest extends TestCase
         self::assertSame($request, $handler->received);
         self::assertNull($handler->received->getParsedBody());
     }
+
+    public function testUnreadableJsonBodyIsNotTreatedAsEmpty(): void
+    {
+        $body = (new StreamFactory())->createStream('{"email":"person@example.test"}');
+        $body->close();
+        $request = new ServerRequest(
+            [],
+            [],
+            'https://example.test/submit',
+            'POST',
+            $body,
+            ['Content-Type' => 'application/json'],
+        );
+        $handler = new CapturingHandler();
+
+        $response = (new JsonBodyParserMiddleware())->process($request, $handler);
+
+        self::assertSame(500, $response->getStatusCode());
+        self::assertNull($handler->received);
+    }
 }
 
 final class CapturingHandler implements RequestHandlerInterface

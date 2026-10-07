@@ -40,7 +40,8 @@ charset parameters) and `application/*+json` media types.
 The middleware leaves non-JSON and already populated parsed bodies unchanged.
 An empty JSON body is left for the application's normal validation rules;
 malformed or scalar JSON returns a JSON `400` response. Seekable request-body
-streams retain their cursor position after parsing.
+streams retain their cursor position after parsing. An unreadable request-body
+stream returns a JSON `500` response rather than being treated as empty input.
 
 ## Development
 
