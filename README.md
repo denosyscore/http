@@ -18,17 +18,16 @@ composer require denosyscore/http
 
 ## PSR response security headers
 
-Register `Denosys\Http\Middleware\SecurityHeadersMiddleware` in the global
-PSR-15 middleware stack to attach default security headers to every returned
-PSR-7 response. It sets `X-Content-Type-Options: nosniff`,
-`X-Frame-Options: DENY`, and the existing `X-XSS-Protection` default. HTTPS
-requests also receive `Strict-Transport-Security`. Explicit response headers
-take precedence over these defaults.
+The HTTP kernel attaches the existing default security policy to every
+returned PSR-7 response before dispatching `ResponseReady`. It sets
+`X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, and the existing
+`X-XSS-Protection` default. HTTPS requests also receive
+`Strict-Transport-Security`. Explicit response headers take precedence over
+these defaults.
 
 The existing `SecurityHeadersServiceProvider` remains available for consumers
-that rely on native SAPI headers. Framework integration should use the
-middleware so direct response handling and alternate emitters receive the
-same policy.
+that rely on native SAPI headers. Direct kernel handling and alternate emitters
+receive the policy through the returned response object.
 
 ## Development
 

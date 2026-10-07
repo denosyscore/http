@@ -2,19 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Denosys\Http\Middleware;
+namespace Denosys\Http\Internal;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
-final class SecurityHeadersMiddleware implements MiddlewareInterface
+/** @internal Kernel-owned response policy, not a consumer extension point. */
+final class SecurityHeaders
 {
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function apply(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $response = $handler->handle($request);
-
         $defaults = [
             'X-Content-Type-Options' => 'nosniff',
             'X-Frame-Options' => 'DENY',

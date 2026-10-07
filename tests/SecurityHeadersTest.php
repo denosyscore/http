@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace Denosys\Http\Tests;
 
-use Denosys\Http\Middleware\SecurityHeadersMiddleware;
+use Denosys\Http\Internal\SecurityHeaders;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\ServerRequest;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
-final class SecurityHeadersMiddlewareTest extends TestCase
+final class SecurityHeadersTest extends TestCase
 {
     public function testAddsDefaultsToHttpResponseWithoutHsts(): void
     {
@@ -51,21 +48,14 @@ final class SecurityHeadersMiddlewareTest extends TestCase
 
     private function dispatch(string $uri, ?ResponseInterface $response = null): ResponseInterface
     {
-        self::assertTrue(class_exists(SecurityHeadersMiddleware::class));
+        self::assertTrue(class_exists(SecurityHeaders::class));
 
-        $middlewareClass = SecurityHeadersMiddleware::class;
-        $middleware = new $middlewareClass();
-        self::assertInstanceOf(MiddlewareInterface::class, $middleware);
+        $policyClass = SecurityHeaders::class;
+        $policy = new $policyClass();
 
-        $handler = new class ($response ?? new HtmlResponse('ok')) implements RequestHandlerInterface {
-            public function __construct(private readonly ResponseInterface $response) {}
-
-            public function handle(ServerRequestInterface $request): ResponseInterface
-            {
-                return $this->response;
-            }
-        };
-
-        return $middleware->process(new ServerRequest([], [], $uri, 'GET'), $handler);
+        return $policy->apply(
+            new ServerRequest([], [], $uri, 'GET'),
+            $response ?? new HtmlResponse('ok')
+        );
     }
 }

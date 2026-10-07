@@ -12,6 +12,7 @@ use Denosys\Events\ResponseReady;
 use Denosys\Events\RequestHandling;
 use Denosys\Events\ListenerProvider;
 use Denosys\Http\Events\KernelBooted;
+use Denosys\Http\Internal\SecurityHeaders;
 use Psr\Http\Message\ResponseInterface;
 use Denosys\Http\Events\KernelBooting;
 use Laminas\Diactoros\ServerRequestFactory;
@@ -103,6 +104,7 @@ class Kernel
         /** @var Router $router */
         $router = $this->container->get(Router::class);
         $response = $router->dispatch($request);
+        $response = (new SecurityHeaders())->apply($request, $response);
 
         // Dispatch response ready event
         $this->dispatcher->dispatch(new ResponseReady($response));
