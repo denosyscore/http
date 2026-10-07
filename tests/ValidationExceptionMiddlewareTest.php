@@ -34,7 +34,7 @@ final class ValidationExceptionMiddlewareTest extends TestCase
             ->withHeader('X-Inertia', 'true')
             ->withParsedBody(['email' => 'invalid', 'password' => 'secret']);
 
-        $response = new ValidationExceptionMiddleware($session)->process($request, $this->failingHandler());
+        $response = (new ValidationExceptionMiddleware($session))->process($request, $this->failingHandler());
 
         self::assertSame(303, $response->getStatusCode());
         self::assertSame('/', $response->getHeaderLine('Location'));
@@ -49,7 +49,7 @@ final class ValidationExceptionMiddlewareTest extends TestCase
         $request = (new ServerRequest([], [], 'https://example.test/submit', 'POST'))
             ->withHeader('Referer', 'https://example.test/form?step=2');
 
-        $response = new ValidationExceptionMiddleware($session)->process($request, $this->failingHandler());
+        $response = (new ValidationExceptionMiddleware($session))->process($request, $this->failingHandler());
 
         self::assertSame(302, $response->getStatusCode());
         self::assertSame('https://example.test/form?step=2', $response->getHeaderLine('Location'));
@@ -60,7 +60,7 @@ final class ValidationExceptionMiddlewareTest extends TestCase
         $session = $this->createMock(SessionInterface::class);
         $session->method('previousUrl')->willReturn('//other.test/steal');
 
-        $response = new ValidationExceptionMiddleware($session)->process(
+        $response = (new ValidationExceptionMiddleware($session))->process(
             new ServerRequest([], [], 'https://example.test/submit', 'POST'),
             $this->failingHandler(),
         );
