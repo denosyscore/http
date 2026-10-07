@@ -19,7 +19,7 @@ final class XsrfCookieMiddlewareTest extends TestCase
         $handler = new class implements RequestHandlerInterface {
             public function handle(ServerRequestInterface $request): ResponseInterface
             {
-                return new Response()->withAddedHeader('Set-Cookie', 'session=existing; HttpOnly');
+                return (new Response())->withAddedHeader('Set-Cookie', 'session=existing; HttpOnly');
             }
         };
         $middleware = new XsrfCookieMiddleware(static fn (): string => 'test+token');
