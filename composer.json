@@ -9,10 +9,16 @@
     "laminas/laminas-httphandlerrunner": "^2.12",
     "nyholm/psr7": "^1.8",
     "psr/event-dispatcher": "^1.0",
+    "psr/http-message": "^2.0",
+    "psr/http-server-handler": "^1.0",
+    "psr/http-server-middleware": "^1.0",
     "denosyscore/contracts": "^0.2",
     "denosyscore/container": "^0.2",
     "denosyscore/events": "^0.2",
     "denosyscore/validation": "^0.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5"
   },
   "autoload": {
     "psr-4": {
@@ -20,6 +26,9 @@
       "Denosys\\Http\\Exceptions\\": "src/Exceptions/",
       "Denosys\\Http\\Security\\": "src/Security/"
     }
+  },
+  "scripts": {
+    "test": "phpunit"
   },
   "config": {
     "sort-packages": true
