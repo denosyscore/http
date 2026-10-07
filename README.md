@@ -60,6 +60,17 @@ for its chosen mutation requests while leaving other requests at `302`.
 register a different exception middleware when they need a JSON error
 response or a different return-URL policy.
 
+## Browser XSRF cookie
+
+`Denosys\Http\Middleware\XsrfCookieMiddleware` is an opt-in PSR-15 companion
+to cookie-to-header CSRF clients. Supply a callback that returns the current
+session's CSRF token and register the middleware after session startup. It
+adds a host-only, browser-readable `XSRF-TOKEN` cookie with `Path=/` and
+`SameSite=Lax`; `Secure` is set for HTTPS requests by default. Existing
+`Set-Cookie` headers remain intact. An empty token emits no cookie. The
+token callback keeps this HTTP package independent of any particular session
+implementation. The cookie lifetime, name, and secure policy are configurable.
+
 ## Development
 
 composer validate --strict

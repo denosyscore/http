@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add opt-in XSRF cookie middleware backed by a token callback, without a
+  required session dependency (compatible additive API).
 - Attach the existing security-header policy to immutable responses returned
   by the HTTP kernel across SAPIs, without replacing explicit headers.
 - Declare the PSR HTTP message and server interface dependencies used by the
