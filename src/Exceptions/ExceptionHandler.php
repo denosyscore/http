@@ -73,7 +73,7 @@ class ExceptionHandler
         ]);
 
         if ($this->shouldUseWhoops() && $this->whoops) {
-            $this->handler->setPageTitle($exception->getMessage());
+            $this->handler?->setPageTitle($exception->getMessage());
             $this->whoops->handleException($exception);
         } elseif ($this->debug) {
             $this->renderDebugException($exception);
@@ -105,18 +105,19 @@ class ExceptionHandler
             $handler = new JsonResponseHandler();
             $handler->addTraceToOutput(true);
         } else {
-            $this->handler = new PrettyPageHandler();
-            $this->handler->setEditor(PrettyPageHandler::EDITOR_VSCODE);
+            $handler = new PrettyPageHandler();
+            $this->handler = $handler;
+            $handler->setEditor(PrettyPageHandler::EDITOR_VSCODE);
 
-            $this->handler->addDataTable('Denosys', [
+            $handler->addDataTable('Denosys', [
                 'Version' => '1.0.0', // TODO: Replace with actual version
             ]);
 
-            $this->handler->setApplicationPaths([$this->basePath]);
+            $handler->setApplicationPaths([$this->basePath]);
         }
 
         $this->whoops = new Run();
-        $this->whoops->pushHandler($this->handler);
+        $this->whoops->pushHandler($handler);
         $this->whoops->register();
     }
 
