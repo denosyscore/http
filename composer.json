@@ -18,6 +18,7 @@
     "denosyscore/validation": "^0.2"
   },
   "require-dev": {
+    "filp/whoops": "^2.18",
     "phpunit/phpunit": "^10.5"
   },
   "autoload": {
