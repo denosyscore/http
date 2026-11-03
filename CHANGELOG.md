@@ -1,6 +1,12 @@
 # Changelog
 
-## Unreleased (proposed 0.3.1)
+## Unreleased (proposed 0.3.2)
+
+- Own the validation exception response handler on the HTTP side of the
+  dependency and retain the former validation namespace as an alias when HTTP
+  is installed.
+
+## 0.3.1
 
 - Include the required `Allow` header when routing method-not-allowed
   exceptions become HTTP 405 responses. Add standalone integration coverage

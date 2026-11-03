@@ -26,6 +26,9 @@
     "denosyscore/routing": "Provides typed routing HTTP exceptions for HttpExceptionMiddleware"
   },
   "autoload": {
+    "files": [
+      "src/legacy-validation-handler.php"
+    ],
     "psr-4": {
       "Denosys\\Http\\": "src/Http/",
       "Denosys\\Http\\Exceptions\\": "src/Exceptions/",

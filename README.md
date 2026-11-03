@@ -60,6 +60,13 @@ for its chosen mutation requests while leaving other requests at `302`.
 register a different exception middleware when they need a JSON error
 response or a different return-URL policy.
 
+`Denosys\Http\Exceptions\ValidationExceptionHandler` is the HTTP-owned
+exception-chain adapter for validation errors. It returns JSON or HTML with
+status 422. The former
+`Denosys\Validation\Handlers\ValidationExceptionHandler` name remains an
+alias when HTTP is installed, so existing integrations can migrate without
+changing behavior. Standalone validation has no HTTP response adapter.
+
 ## Browser XSRF cookie
 
 `Denosys\Http\Middleware\XsrfCookieMiddleware` is an opt-in PSR-15 companion
