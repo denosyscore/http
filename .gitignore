@@ -1,4 +1,6 @@
 /vendor/
+/integration/session/vendor/
+/integration/session/composer.lock
 /.idea/
 /.vscode/
 composer.lock

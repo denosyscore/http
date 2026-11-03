@@ -23,7 +23,8 @@
     "phpunit/phpunit": "^10.5"
   },
   "suggest": {
-    "denosyscore/routing": "Provides typed routing HTTP exceptions for HttpExceptionMiddleware"
+    "denosyscore/routing": "Provides typed routing HTTP exceptions for HttpExceptionMiddleware",
+    "denosyscore/session": "Provides the session contract for session-aware HTTP middleware"
   },
   "autoload": {
     "files": [

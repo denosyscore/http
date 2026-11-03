@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased (proposed 0.3.2)
+## Unreleased
+
+- Test the optional session middleware against the installed session package
+  in an isolated Composer project, without adding a runtime dependency cycle.
+
+## 0.3.2
 
 - Own the validation exception response handler on the HTTP side of the
   dependency and retain the former validation namespace as an alias when HTTP

@@ -35,6 +35,14 @@ jobs:
       - name: Run HTTP tests
         run: composer test
 
+      - name: Test optional session integration
+        if: matrix.validation == '0.3.0'
+        working-directory: integration/session
+        run: |
+          composer validate --strict --no-check-publish
+          composer install --no-interaction --prefer-dist
+          php session-middleware.php
+
       - name: PHP syntax check
         run: |
           if [ -d src ]; then

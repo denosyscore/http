@@ -87,9 +87,20 @@ is an optional integration for standalone HTTP consumers.
 
 ## Development
 
+```bash
 composer validate --strict
 find src -type f -name '*.php' -print0 | xargs -0 -n1 php -l
 composer test
+```
+
+The session middleware has a separate integration root so its real session
+interface can be installed without adding a dependency cycle to this package:
+
+```bash
+cd integration/session
+composer install
+php session-middleware.php
+```
 
 ## CI Workflows
 
@@ -99,7 +110,8 @@ composer test
 
 ## Releases
 
-CI tests against validation v0.2.2 and v0.3.0. After CI passes on `main`,
+CI tests against validation v0.2.2 and v0.3.0; the isolated session test
+uses validation v0.3.3. After CI passes on `main`,
 create an annotated semantic version tag from that reviewed commit and push
 it. The Release workflow publishes a GitHub Release. Confirm the matching
 version is available in the Composer package index before updating consumers.
