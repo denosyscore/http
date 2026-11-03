@@ -34,7 +34,8 @@ final class ValidationExceptionHandlerTest extends TestCase
             self::assertTrue($handler->canHandle($exception));
             $response = $handler->handle($exception);
             self::assertSame(422, $response->getStatusCode());
-            self::assertSame(['email' => ['Invalid address']], json_decode((string) $response->getBody(), true)['errors']);
+            $field = array_is_list($exception->getErrors()) ? 'general' : 'email';
+            self::assertSame([$field => ['Invalid address']], json_decode((string) $response->getBody(), true)['errors']);
         } finally {
             if ($previous === null) {
                 unset($_SERVER['HTTP_ACCEPT']);

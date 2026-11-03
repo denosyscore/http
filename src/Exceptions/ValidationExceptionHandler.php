@@ -50,7 +50,7 @@ class ValidationExceptionHandler implements ExceptionHandlerInterface
         $data = [
             'error' => true,
             'message' => 'The given data was invalid.',
-            'errors' => $exception->getErrors()
+            'errors' => $this->errors($exception)
         ];
 
         if ($this->isDebugMode()) {
@@ -69,7 +69,7 @@ class ValidationExceptionHandler implements ExceptionHandlerInterface
      */
     private function createWebResponse(ValidationException $exception): ResponseInterface
     {
-        $errors = $exception->getErrors();
+        $errors = $this->errors($exception);
         $errorHtml = $this->renderErrorsHtml($errors);
 
         $html = <<<HTML
@@ -174,5 +174,17 @@ HTML;
 
         $html .= '</ul>';
         return $html;
+    }
+
+    /** @return array<string, list<string>> */
+    private function errors(ValidationException $exception): array
+    {
+        $errors = $exception->getErrors();
+        if ($errors === []) {
+            return [];
+        }
+
+        // Validation 0.2 exposes a flat message list; 0.3 retains field keys.
+        return array_is_list($errors) ? ['general' => $errors] : $errors;
     }
 }
