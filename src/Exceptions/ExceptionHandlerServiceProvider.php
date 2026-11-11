@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Denosys\Http\Exceptions;
 
 use Denosys\Container\ContainerInterface;
+use Denosys\Container\Exceptions\ContainerResolutionException;
+use Denosys\Container\Exceptions\NotFoundException;
 use Denosys\Contracts\ServiceProviderInterface;
 use Denosys\Bootstrap\Configuration\ExceptionConfiguration;
 use Psr\Log\LoggerInterface;

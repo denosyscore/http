@@ -16,13 +16,13 @@ use Denosys\Http\Internal\SecurityHeaders;
 use Psr\Http\Message\ResponseInterface;
 use Denosys\Http\Events\KernelBooting;
 use Laminas\Diactoros\ServerRequestFactory;
-use Denosys\Http\Exceptions\NotFoundException;
+use Denosys\Container\Exceptions\NotFoundException;
 use Psr\Http\Message\ServerRequestInterface;
-use Denosys\Http\Exceptions\ContainerException;
+use Denosys\Container\Exceptions\ContainerException;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use Denosys\Bootstrap\ServiceProviderBootstrapper;
-use Denosys\Http\Exceptions\ContainerResolutionException;
+use Denosys\Container\Exceptions\ContainerResolutionException;
 use Denosys\Http\Exceptions\ExceptionHandler;
 
 class Kernel

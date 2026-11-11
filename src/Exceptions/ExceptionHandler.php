@@ -110,7 +110,7 @@ class ExceptionHandler
             $handler->setEditor(PrettyPageHandler::EDITOR_VSCODE);
 
             $handler->addDataTable('Denosys', [
-                'Version' => '1.0.0', // TODO: Replace with actual version
+                'Version' => \Composer\InstalledVersions::getPrettyVersion('denosyscore/http') ?? 'unknown',
             ]);
 
             $handler->setApplicationPaths([$this->basePath]);

@@ -8,7 +8,7 @@ use Denosys\Container\ContainerInterface;
 use Denosys\Contracts\ServiceProviderInterface;
 use Denosys\View\ViewEngine;
 use Denosys\Session\SessionInterface;
-use Denosys\Http\Exceptions\NotFoundException;
+use Denosys\Container\Exceptions\NotFoundException;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
 /**

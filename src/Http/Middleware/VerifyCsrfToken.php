@@ -176,21 +176,6 @@ class VerifyCsrfToken implements MiddlewareInterface
     }
 
     /**
-     * Get the referer URL for redirect.
-     */
-    protected function getRefererUrl(ServerRequestInterface $request): string
-    {
-        $referer = $request->getHeaderLine('Referer');
-
-        if (!empty($referer)) {
-            return $referer;
-        }
-
-        // Fall back to previous URL in session or home
-        return $this->session->previousUrl() ?? '/';
-    }
-
-    /**
      * Set URI patterns to exclude from CSRF verification.
      *
      * @param array<string> $patterns URI patterns (supports * wildcard)

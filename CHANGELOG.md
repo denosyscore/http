@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.4.0 – 2026-11-11
+
+### Removed (breaking)
+
+- Copies of the container exceptions under `Denosys\Http\Exceptions`:
+  `BindingConflictException`, `CircularDependencyException`,
+  `ContainerException`, `ContainerExceptionFactory`,
+  `ContainerResolutionException` and `NotFoundException`. The container
+  never threw them; catch the `Denosys\Container\Exceptions` classes or the
+  PSR-11 interfaces instead.
+- Unused `DatabaseException`, `HandlerException`, `ItemNotFoundException`,
+  `NoConfigFileSampleException` and `WrongValueException`.
+- `Denosys\Http\Listeners\ScreamBooting`, a debugging listener that called
+  `dd()`.
+- `VerifyCsrfToken::getRefererUrl()`, which nothing called.
+
+### Changed
+
+- The development error page reports the installed `denosyscore/http`
+  version instead of a placeholder `1.0.0`.
+
 ## 0.3.3 – 2026-11-11
 
 ### Security
