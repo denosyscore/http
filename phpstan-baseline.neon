@@ -1,0 +1,709 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method Psr\\Http\\Message\\StreamInterface@anonymous/Exceptions/EmergencyResponseFactory\.php\:104\:\:getSize\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Exceptions/EmergencyResponseFactory.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function strpos expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 3
+			path: src/Exceptions/EmergencyResponseFactory.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strtolower expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/EmergencyResponseFactory.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_contains expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Exceptions/ExceptionHandler.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strtolower expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ExceptionHandler.php
+
+		-
+			message: '#^Call to method get\(\) on an unknown class Denosys\\Environment\\EnvironmentManager\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Exceptions/ExceptionHandlerServiceProvider.php
+
+		-
+			message: '#^Cannot call method apply\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Exceptions/ExceptionHandlerServiceProvider.php
+
+		-
+			message: '#^Class Denosys\\Bootstrap\\Configuration\\ExceptionConfiguration not found\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Exceptions/ExceptionHandlerServiceProvider.php
+
+		-
+			message: '#^Class Denosys\\Environment\\EnvironmentManager not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Exceptions/ExceptionHandlerServiceProvider.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$environmentManager contains unknown class Denosys\\Environment\\EnvironmentManager\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Exceptions/ExceptionHandlerServiceProvider.php
+
+		-
+			message: '#^Parameter \#1 \$basePath of class Denosys\\Http\\Exceptions\\ExceptionHandler constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ExceptionHandlerServiceProvider.php
+
+		-
+			message: '#^Parameter \#2 \$logger of class Denosys\\Http\\Exceptions\\ExceptionHandler constructor expects Psr\\Log\\LoggerInterface\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ExceptionHandlerServiceProvider.php
+
+		-
+			message: '#^Parameter \#3 \$debug of class Denosys\\Http\\Exceptions\\ExceptionHandler constructor expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ExceptionHandlerServiceProvider.php
+
+		-
+			message: '#^Parameter \#4 \$environment of class Denosys\\Http\\Exceptions\\ExceptionHandler constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ExceptionHandlerServiceProvider.php
+
+		-
+			message: '#^Cannot access offset ''args'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 4
+			path: src/Exceptions/FatalError.php
+
+		-
+			message: '#^Cannot access offset ''class'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Exceptions/FatalError.php
+
+		-
+			message: '#^Cannot access offset ''params'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 3
+			path: src/Exceptions/FatalError.php
+
+		-
+			message: '#^Cannot access offset ''this'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Exceptions/FatalError.php
+
+		-
+			message: '#^Cannot access offset ''type'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Exceptions/FatalError.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Exceptions/SuggestionEngine.php
+
+		-
+			message: '#^Method Denosys\\Http\\Exceptions\\SuggestionEngine\:\:analyzeAbstract\(\) should return array\<string, mixed\> but returns list\<string\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Exceptions/SuggestionEngine.php
+
+		-
+			message: '#^Method Denosys\\Http\\Exceptions\\SuggestionEngine\:\:generateSuggestions\(\) should return array\<string\> but returns array\<mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Exceptions/SuggestionEngine.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_keys expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/SuggestionEngine.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_unique expects an array of values castable to string, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/SuggestionEngine.php
+
+		-
+			message: '#^Parameter \#2 \$str2 of static method Denosys\\Http\\Exceptions\\SuggestionEngine\:\:calculateSimilarity\(\) expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/SuggestionEngine.php
+
+		-
+			message: '#^Part \$aliases\[\$abstract\] \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Exceptions/SuggestionEngine.php
+
+		-
+			message: '#^Call to function array_is_list\(\) with non\-empty\-array\<string, array\<string\>\> will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: src/Exceptions/ValidationExceptionHandler.php
+
+		-
+			message: '#^Method Denosys\\Http\\Exceptions\\ValidationExceptionHandler\:\:errors\(\) should return array\<string, list\<string\>\> but returns non\-empty\-array\<string, array\<string\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Exceptions/ValidationExceptionHandler.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_contains expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Exceptions/ValidationExceptionHandler.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_starts_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ValidationExceptionHandler.php
+
+		-
+			message: '#^Parameter \#1 \$string of function strtolower expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ValidationExceptionHandler.php
+
+		-
+			message: '#^Method Denosys\\Http\\FormRequest\:\:session\(\) has invalid return type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/FormRequest.php
+
+		-
+			message: '#^Cannot call method setSession\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Http/HttpServiceProvider.php
+
+		-
+			message: '#^Cannot call method setViewEngine\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Http/HttpServiceProvider.php
+
+		-
+			message: '#^Class Denosys\\Session\\SessionInterface not found\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Http/HttpServiceProvider.php
+
+		-
+			message: '#^Class Denosys\\View\\ViewEngine not found\.$#'
+			identifier: class.notFound
+			count: 3
+			path: src/Http/HttpServiceProvider.php
+
+		-
+			message: '#^Parameter \#1 \$viewEngine of class Denosys\\Http\\ResponseFactory constructor expects Denosys\\View\\ViewEngine\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/HttpServiceProvider.php
+
+		-
+			message: '#^Call to method bootstrap\(\) on an unknown class Denosys\\Bootstrap\\ServiceProviderBootstrapper\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Kernel.php
+
+		-
+			message: '#^Parameter \#1 \$container of class Denosys\\Http\\Events\\KernelBooted constructor expects Denosys\\Container\\Container, Denosys\\Container\\ContainerInterface given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Kernel.php
+
+		-
+			message: '#^Parameter \#1 \$container of class Denosys\\Http\\Events\\KernelBooting constructor expects Denosys\\Container\\Container, Denosys\\Container\\ContainerInterface given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Kernel.php
+
+		-
+			message: '#^Parameter \$bootstrapper of method Denosys\\Http\\Kernel\:\:__construct\(\) has invalid type Denosys\\Bootstrap\\ServiceProviderBootstrapper\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Kernel.php
+
+		-
+			message: '#^Property Denosys\\Http\\Kernel\:\:\$bootstrapper has unknown class Denosys\\Bootstrap\\ServiceProviderBootstrapper as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Kernel.php
+
+		-
+			message: '#^Property Denosys\\Http\\Kernel\:\:\$exceptionHandler \(Denosys\\Http\\Exceptions\\ExceptionHandler\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Http/Kernel.php
+
+		-
+			message: '#^Call to method get\(\) on an unknown class Denosys\\Config\\ConfigurationInterface\.$#'
+			identifier: class.notFound
+			count: 3
+			path: src/Http/Middleware/CorsMiddleware.php
+
+		-
+			message: '#^Parameter \#2 \$allowedOrigins of method Denosys\\Http\\Middleware\\CorsMiddleware\:\:resolveAllowedOrigin\(\) expects array\<string\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/CorsMiddleware.php
+
+		-
+			message: '#^Parameter \#2 \$value of method Psr\\Http\\Message\\MessageInterface\:\:withHeader\(\) expects array\<string\>\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Http/Middleware/CorsMiddleware.php
+
+		-
+			message: '#^Parameter \$config of method Denosys\\Http\\Middleware\\CorsMiddleware\:\:__construct\(\) has invalid type Denosys\\Config\\ConfigurationInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/CorsMiddleware.php
+
+		-
+			message: '#^Property Denosys\\Http\\Middleware\\CorsMiddleware\:\:\$config has unknown class Denosys\\Config\\ConfigurationInterface as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/CorsMiddleware.php
+
+		-
+			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/HttpExceptionMiddleware.php
+
+		-
+			message: '#^Call to method flash\(\) on an unknown class Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Http/Middleware/RateLimitExceptionMiddleware.php
+
+		-
+			message: '#^Call to method previousUrl\(\) on an unknown class Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/RateLimitExceptionMiddleware.php
+
+		-
+			message: '#^Parameter \#1 \$url of static method Denosys\\Http\\SameOriginUrl\:\:resolve\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/RateLimitExceptionMiddleware.php
+
+		-
+			message: '#^Parameter \$session of method Denosys\\Http\\Middleware\\RateLimitExceptionMiddleware\:\:__construct\(\) has invalid type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/RateLimitExceptionMiddleware.php
+
+		-
+			message: '#^Property Denosys\\Http\\Middleware\\RateLimitExceptionMiddleware\:\:\$session has unknown class Denosys\\Session\\SessionInterface as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/RateLimitExceptionMiddleware.php
+
+		-
+			message: '#^Call to method availableAt\(\) on an unknown class Denosys\\RateLimiter\\RateLimiter\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Call to method availableIn\(\) on an unknown class Denosys\\RateLimiter\\RateLimiter\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Call to method hit\(\) on an unknown class Denosys\\RateLimiter\\RateLimiter\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Call to method remaining\(\) on an unknown class Denosys\\RateLimiter\\RateLimiter\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Call to method tooManyAttempts\(\) on an unknown class Denosys\\RateLimiter\\RateLimiter\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Parameter \#1 \$retryAfter of class Denosys\\Http\\Exceptions\\TooManyRequestsException constructor expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Parameter \$limiter of method Denosys\\Http\\Middleware\\ThrottleRequestsMiddleware\:\:__construct\(\) has invalid type Denosys\\RateLimiter\\RateLimiter\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Property Denosys\\Http\\Middleware\\ThrottleRequestsMiddleware\:\:\$limiter has unknown class Denosys\\RateLimiter\\RateLimiter as its type\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Http/Middleware/ThrottleRequestsMiddleware.php
+
+		-
+			message: '#^Call to method flash\(\) on an unknown class Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 3
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Call to method previousUrl\(\) on an unknown class Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Method Denosys\\Http\\Middleware\\ValidationExceptionMiddleware\:\:getRefererUrl\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Parameter \#1 \$data of method Denosys\\Http\\Middleware\\ValidationExceptionMiddleware\:\:filterSensitiveFields\(\) expects array\<string, mixed\>, array\<mixed, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Parameter \#1 \$data of method Denosys\\Http\\Middleware\\ValidationExceptionMiddleware\:\:filterSensitiveFields\(\) expects array\<string, mixed\>, array\|object given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Parameter \#2 \$status of method Denosys\\Http\\Middleware\\ValidationExceptionMiddleware\:\:createRedirectResponse\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Parameter \$session of method Denosys\\Http\\Middleware\\ValidationExceptionMiddleware\:\:__construct\(\) has invalid type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Parameter \$session of method Denosys\\Http\\Middleware\\ValidationExceptionMiddleware\:\:getRefererUrl\(\) has invalid type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Property Denosys\\Http\\Middleware\\ValidationExceptionMiddleware\:\:\$redirectStatusResolver \(\(Closure\(Psr\\Http\\Message\\ServerRequestInterface\)\: int\)\|null\) does not accept \(Closure\(\)\: mixed\)\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Property Denosys\\Http\\Middleware\\ValidationExceptionMiddleware\:\:\$session has unknown class Denosys\\Session\\SessionInterface as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/ValidationExceptionMiddleware.php
+
+		-
+			message: '#^Call to method token\(\) on an unknown class Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: '#^Parameter \#1 \$known_string of function hash_equals expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: '#^Parameter \#2 \$pattern of method Denosys\\Http\\Middleware\\VerifyCsrfToken\:\:matchesPattern\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: '#^Parameter \$session of method Denosys\\Http\\Middleware\\VerifyCsrfToken\:\:__construct\(\) has invalid type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: '#^Property Denosys\\Http\\Middleware\\VerifyCsrfToken\:\:\$except \(array\<string, mixed\>\) does not accept array\<int\|string, mixed\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: '#^Property Denosys\\Http\\Middleware\\VerifyCsrfToken\:\:\$except \(array\<string, mixed\>\) does not accept array\<string\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: '#^Property Denosys\\Http\\Middleware\\VerifyCsrfToken\:\:\$session has unknown class Denosys\\Session\\SessionInterface as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: '#^Cannot call method flash\(\) on Denosys\\Session\\SessionInterface\|null\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: src/Http/RedirectResponse.php
+
+		-
+			message: '#^Method Denosys\\Http\\RedirectResponse\:\:getSession\(\) has invalid return type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/RedirectResponse.php
+
+		-
+			message: '#^Parameter \$session of method Denosys\\Http\\RedirectResponse\:\:setSession\(\) has invalid type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/RedirectResponse.php
+
+		-
+			message: '#^Property Denosys\\Http\\RedirectResponse\:\:\$session has unknown class Denosys\\Session\\SessionInterface as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/RedirectResponse.php
+
+		-
+			message: '#^Access to constant SESSION on an unknown class Denosys\\Session\\SessionAttributeKeys\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Http/Request.php
+
+		-
+			message: '#^Call to method get\(\) on an unknown class Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Http/Request.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Class Denosys\\Session\\SessionInterface not found\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:getAttributes\(\) should return array\<string, mixed\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:getCookieParams\(\) should return array\<string, string\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:getHeaders\(\) should return array\<string, array\<string\>\|string\> but returns array\<array\<string\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:getParsedBody\(\) should return array\<string, mixed\>\|object\|null but returns array\|object\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:getQueryParams\(\) should return array\<string, mixed\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:getServerParams\(\) should return array\<string, mixed\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:getUploadedFiles\(\) should return array\<string, Psr\\Http\\Message\\UploadedFileInterface\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:ip\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 3
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:oldInput\(\) should return array\<string, mixed\> but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Method Denosys\\Http\\Request\:\:session\(\) has invalid return type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Request.php
+
+		-
+			message: '#^Parameter \#1 \$name of method Denosys\\Http\\Request\:\:getAttribute\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Http/Request.php
+
+		-
+			message: '#^Call to method render\(\) on an unknown class Denosys\\View\\ViewEngine\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Method Denosys\\Http\\ResponseFactory\:\:getViewEngine\(\) has invalid return type Denosys\\View\\ViewEngine\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#1 \$html of class Laminas\\Diactoros\\Response\\HtmlResponse constructor expects Psr\\Http\\Message\\StreamInterface\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#1 \$stream of function fclose expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#1 \$stream of function fputcsv expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#1 \$stream of function rewind expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#1 \$stream of function stream_get_contents expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#1 \$string of method Psr\\Http\\Message\\StreamInterface\:\:write\(\) expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#2 \$fields of function fputcsv expects array\<int\|string, bool\|float\|int\|string\|null\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#3 \$headers of class Laminas\\Diactoros\\Response\\HtmlResponse constructor expects array\<non\-empty\-string, array\<string\>\|string\>, array\<string, array\<string\>\|string\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#3 \$headers of class Laminas\\Diactoros\\Response\\JsonResponse constructor expects array\<non\-empty\-string, array\<string\>\|string\>, array\<string, array\<string\>\|string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \#3 \$headers of class Laminas\\Diactoros\\Response\\TextResponse constructor expects array\<non\-empty\-string, array\<string\>\|string\>, array\<string, array\<string\>\|string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \$session of method Denosys\\Http\\ResponseFactory\:\:__construct\(\) has invalid type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \$session of method Denosys\\Http\\ResponseFactory\:\:setSession\(\) has invalid type Denosys\\Session\\SessionInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \$viewEngine of method Denosys\\Http\\ResponseFactory\:\:__construct\(\) has invalid type Denosys\\View\\ViewEngine\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Parameter \$viewEngine of method Denosys\\Http\\ResponseFactory\:\:setViewEngine\(\) has invalid type Denosys\\View\\ViewEngine\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Property Denosys\\Http\\ResponseFactory\:\:\$session has unknown class Denosys\\Session\\SessionInterface as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/ResponseFactory.php
+
+		-
+			message: '#^Property Denosys\\Http\\ResponseFactory\:\:\$viewEngine has unknown class Denosys\\View\\ViewEngine as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/ResponseFactory.php

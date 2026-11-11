@@ -20,7 +20,8 @@
   "require-dev": {
     "denosyscore/routing": "0.6.0-alpha.1",
     "filp/whoops": "^2.18",
-    "phpunit/phpunit": "^10.5"
+    "phpunit/phpunit": "^10.5",
+    "phpstan/phpstan": "^2.1"
   },
   "suggest": {
     "denosyscore/routing": "Provides typed routing HTTP exceptions for HttpExceptionMiddleware",
@@ -37,7 +38,8 @@
     }
   },
   "scripts": {
-    "test": "phpunit"
+    "test": "phpunit",
+    "analyse": "phpstan analyse --no-progress --memory-limit=1G"
   },
   "config": {
     "sort-packages": true
