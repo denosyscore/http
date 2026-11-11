@@ -2,13 +2,55 @@
 
 HTTP kernel, middleware, and exception handling
 
-## Status
-
-Initial extraction snapshot from denosyscore monorepo as of 2026-02-14.
-
 ## Installation
 
+```bash
 composer require denosyscore/http
+```
+
+## Quick start
+
+PSR-7 responses and PSR-15 middleware. The response factory and middleware below need no container.
+
+<!-- quickstart -->
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Denosys\Http\Middleware\JsonBodyParserMiddleware;
+use Denosys\Http\ResponseFactory;
+use Laminas\Diactoros\ServerRequest;
+use Laminas\Diactoros\StreamFactory;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+$responses = new ResponseFactory();
+
+// A PSR-15 handler that reads the parsed JSON body.
+$handler = new class ($responses) implements RequestHandlerInterface {
+    public function __construct(private ResponseFactory $responses) {}
+
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        $order = $request->getParsedBody();
+
+        return $this->responses->json(['received' => $order['sku']], 201);
+    }
+};
+
+$request = (new ServerRequest([], [], 'https://shop.test/orders', 'POST'))
+    ->withHeader('Content-Type', 'application/json')
+    ->withBody((new StreamFactory())->createStream('{"sku":"sku-1"}'));
+
+$response = (new JsonBodyParserMiddleware())->process($request, $handler);
+echo $response->getStatusCode(), ' ', $response->getBody(), "\n";  // 201 {"received":"sku-1"}
+
+// back() only follows a Referer on the request's own origin.
+$back = $responses->back($request->withHeader('Referer', 'https://evil.example/'), '/orders');
+echo $back->getHeaderLine('Location'), "\n";  // /orders
+```
 
 ## Included Modules
 
