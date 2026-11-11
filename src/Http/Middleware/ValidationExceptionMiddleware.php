@@ -6,6 +6,7 @@ namespace Denosys\Http\Middleware;
 
 use Closure;
 use Denosys\Http\RedirectResponse;
+use Denosys\Http\SameOriginUrl;
 use Denosys\Http\Traits\ResolvesReferer;
 use Denosys\Session\SessionInterface;
 use Denosys\Validation\ValidationException;
@@ -75,7 +76,7 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
         }
         
         // Get referrer URL for redirect back (using trait method)
-        $referer = $this->safeReturnUrl(
+        $referer = SameOriginUrl::resolve(
             $this->getRefererUrl($request, $this->session),
             $request,
         );
@@ -85,40 +86,6 @@ class ValidationExceptionMiddleware implements MiddlewareInterface
             : ($this->redirectStatusResolver)($request);
 
         return $this->createRedirectResponse($referer, $status);
-    }
-
-    private function safeReturnUrl(string $url, ServerRequestInterface $request): string
-    {
-        if ($url === '' || str_contains($url, '\\') || preg_match('/[\x00-\x1F\x7F]/', $url)) {
-            return '/';
-        }
-
-        $parts = parse_url($url);
-        if ($parts === false) {
-            return '/';
-        }
-
-        if (!isset($parts['scheme']) && !isset($parts['host'])) {
-            return str_starts_with($url, '/') && !str_starts_with($url, '//') ? $url : '/';
-        }
-
-        $uri = $request->getUri();
-        $scheme = strtolower($uri->getScheme());
-        $host = strtolower($uri->getHost());
-        $port = $uri->getPort() ?? ($scheme === 'https' ? 443 : 80);
-        $returnScheme = strtolower($parts['scheme'] ?? '');
-        $returnPort = $parts['port'] ?? ($returnScheme === 'https' ? 443 : 80);
-
-        if (!in_array($returnScheme, ['http', 'https'], true)
-            || $returnScheme !== $scheme
-            || strtolower($parts['host'] ?? '') !== $host
-            || $returnPort !== $port
-            || isset($parts['user'])
-            || isset($parts['pass'])) {
-            return '/';
-        }
-
-        return $url;
     }
 
     /**

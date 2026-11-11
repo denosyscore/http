@@ -128,10 +128,10 @@ class ResponseFactory
     }
 
     /**
-     * Create a redirect back response (to referer).
+     * Create a redirect back to the referring page on the same origin.
      *
      * @param ServerRequestInterface|null $request The current request (to get Referer header)
-     * @param string $fallback Fallback URL if no referer is present
+     * @param string $fallback URL used when the referer is missing or points to another origin
      * @param int $status HTTP status code for redirect
      */
     public function back(
@@ -139,8 +139,11 @@ class ResponseFactory
         string $fallback = '/',
         int $status = 302
     ): RedirectResponse {
-        $referer = $request?->getHeaderLine('Referer') ?: $fallback;
-        return $this->redirect($referer, $status);
+        // The Referer header is client-controlled: only follow it within this origin.
+        $referer = $request === null ? '' : $request->getHeaderLine('Referer');
+        $target = $request === null ? $fallback : SameOriginUrl::resolve($referer, $request, $fallback);
+
+        return $this->redirect($target, $status);
     }
 
     /**

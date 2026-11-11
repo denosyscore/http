@@ -6,6 +6,7 @@ namespace Denosys\Http\Middleware;
 
 use Denosys\Http\Exceptions\TooManyRequestsException;
 use Denosys\Http\RedirectResponse;
+use Denosys\Http\SameOriginUrl;
 use Denosys\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -120,13 +121,10 @@ class RateLimitExceptionMiddleware implements MiddlewareInterface
      */
     private function getRefererUrl(ServerRequestInterface $request): string
     {
-        $referer = $request->getHeaderLine('Referer');
+        // Fall back to the previous URL in the session, or home, when the
+        // Referer is missing or points to another origin.
+        $fallback = SameOriginUrl::resolve($this->session->previousUrl() ?? '/', $request, '/');
 
-        if (empty($referer)) {
-            // Fall back to previous URL in session or home
-            return $this->session->previousUrl() ?? '/';
-        }
-
-        return $referer;
+        return SameOriginUrl::resolve($request->getHeaderLine('Referer'), $request, $fallback);
     }
 }

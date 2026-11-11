@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### Security
+
+- `ResponseFactory::back()` and `RateLimitExceptionMiddleware` only redirect
+  to a `Referer` on the request's own origin; otherwise they use the fallback.
+  Both previously followed any `Referer`, an open redirect.
+- Add `SameOriginUrl::resolve()` and `SameOriginUrl::isSameOrigin()`, the
+  check `ValidationExceptionMiddleware` already used, so every redirect-back
+  path shares one rule.
+
 - Test the optional session middleware against the installed session package
   in an isolated Composer project, without adding a runtime dependency cycle.
 
