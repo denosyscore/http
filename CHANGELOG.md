@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.14.0 – 2026-11-12
+
+- **Breaking:** `Events\KernelBooting` and `Events\KernelBooted` are removed.
+  The framework now boots once for HTTP and the console, and nothing
+  listened for them.
+
 ## 0.13.0 – 2026-11-12
 
 - Released with the framework's 0.13 line; no changes to this package.
