@@ -1,5 +1,7 @@
 # denosyscore/http
 
+> **Read-only split.** This package is developed in [denosyscore/framework](https://github.com/denosyscore/framework) under `packages/http`. Open issues and pull requests there.
+
 HTTP kernel, middleware, and exception handling
 
 ## Installation
@@ -144,11 +146,6 @@ composer install
 php session-middleware.php
 ```
 
-## CI Workflows
-
-- CI: Composer validation, isolated dependency installation, HTTP tests, and PHP syntax lint on push and pull requests.
-- Release: GitHub release publication on semantic version tags.
-- Dependabot: weekly Composer dependency update checks.
 
 ## Releases
 

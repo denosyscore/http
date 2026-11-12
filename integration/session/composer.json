@@ -5,22 +5,10 @@
   "license": "MIT",
   "require": {
     "php": "^8.2",
-    "denosyscore/http": "0.3.2",
-    "denosyscore/session": "^0.2.4",
-    "denosyscore/validation": "^0.3.3"
+    "denosyscore/http": "^0.10",
+    "denosyscore/session": "^0.10",
+    "denosyscore/validation": "^0.10"
   },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "../..",
-      "options": {
-        "symlink": true,
-        "versions": {
-          "denosyscore/http": "0.3.2"
-        }
-      }
-    }
-  ],
   "config": {
     "sort-packages": true
   }

@@ -12,13 +12,13 @@
     "psr/http-message": "^2.0",
     "psr/http-server-handler": "^1.0",
     "psr/http-server-middleware": "^1.0",
-    "denosyscore/contracts": "^0.2",
-    "denosyscore/container": "^0.2",
-    "denosyscore/events": "^0.2",
-    "denosyscore/validation": "^0.2 || ^0.3"
+    "denosyscore/contracts": "^0.10",
+    "denosyscore/container": "^0.10",
+    "denosyscore/events": "^0.10",
+    "denosyscore/validation": "^0.10"
   },
   "require-dev": {
-    "denosyscore/routing": "0.6.0-alpha.1",
+    "denosyscore/routing": "^0.10",
     "filp/whoops": "^2.18",
     "phpunit/phpunit": "^10.5",
     "phpstan/phpstan": "^2.1"
@@ -43,5 +43,10 @@
   },
   "config": {
     "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "0.10.x-dev"
+    }
   }
 }
