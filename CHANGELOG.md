@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.11.0 – 2026-11-12
+
+- **Breaking:** `Kernel` moved to `Denosys\Framework\Http\Kernel`; `ThrottleRequestsMiddleware` moved to rate-limiter; providers moved to the framework.
+- **Breaking:** `ResponseFactory` uses `TemplateRenderer` (`setTemplateRenderer()`, `getTemplateRenderer()`).
+- **Security:** fallback 401/403/404/500 pages escape their message.
+- Requires routing, session, `filp/whoops`, `psr/log`.
+
 ## 0.10.0 – 2026-11-12
 
 ### Changed

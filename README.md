@@ -62,15 +62,16 @@ echo $back->getHeaderLine('Location'), "\n";  // /orders
 
 ## PSR response security headers
 
-The HTTP kernel attaches the existing default security policy to every
-returned PSR-7 response before dispatching `ResponseReady`. It sets
+The framework's HTTP kernel (`Denosys\Framework\Http\Kernel`) attaches the
+default security policy to every returned PSR-7 response before dispatching
+`ResponseReady`. It sets
 `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, and the existing
 `X-XSS-Protection` default. HTTPS requests also receive
 `Strict-Transport-Security`. Explicit response headers take precedence over
 these defaults.
 
-The existing `SecurityHeadersServiceProvider` remains available for consumers
-that rely on native SAPI headers. Direct kernel handling and alternate emitters
+The framework's `SecurityHeadersServiceProvider` remains available for
+applications that rely on native SAPI headers. Direct kernel handling and alternate emitters
 receive the policy through the returned response object.
 
 ## JSON request bodies

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Denosys\Http\Middleware;
 
-use Denosys\Config\ConfigurationInterface;
+use Denosys\Contracts\Config\ConfigReader;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -19,7 +19,7 @@ use Psr\Http\Server\MiddlewareInterface;
 class CorsMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        private readonly ConfigurationInterface $config
+        private readonly ConfigReader $config
     ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface

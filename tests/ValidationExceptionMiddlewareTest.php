@@ -12,10 +12,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-if (!interface_exists(SessionInterface::class)) {
-    require __DIR__ . '/Fixtures/SessionInterface.php';
-}
-
 final class ValidationExceptionMiddlewareTest extends TestCase
 {
     public function testConfiguredStatusRejectsExternalRefererAndFlashesReadableOldInput(): void

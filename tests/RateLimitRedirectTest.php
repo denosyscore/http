@@ -11,10 +11,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-if (!interface_exists(SessionInterface::class)) {
-    require __DIR__ . '/Fixtures/SessionInterface.php';
-}
-
 final class RateLimitRedirectTest extends TestCase
 {
     public function testRateLimitRedirectIgnoresAnOffSiteReferer(): void
@@ -34,16 +30,8 @@ final class RateLimitRedirectTest extends TestCase
 
     private function process(string $referer): ResponseInterface
     {
-        $session = new class implements SessionInterface {
-            public function flash(string $key, mixed $value): void
-            {
-            }
-
-            public function previousUrl(): ?string
-            {
-                return '/previous';
-            }
-        };
+        $session = $this->createMock(SessionInterface::class);
+        $session->method('previousUrl')->willReturn('/previous');
 
         $request = (new ServerRequest([], [], 'https://app.test/login', 'POST'))
             ->withHeader('Referer', $referer)

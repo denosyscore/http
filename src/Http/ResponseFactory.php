@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Denosys\Http;
 
-use Denosys\View\ViewEngine;
+use Denosys\Contracts\View\TemplateRenderer;
 use Denosys\Session\SessionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -16,14 +16,14 @@ use InvalidArgumentException;
 
 class ResponseFactory
 {
-    private ?ViewEngine $viewEngine = null;
+    private ?TemplateRenderer $templates = null;
     private ?SessionInterface $session = null;
 
     public function __construct(
-        ?ViewEngine $viewEngine = null,
+        ?TemplateRenderer $templates = null,
         ?SessionInterface $session = null
     ) {
-        $this->viewEngine = $viewEngine;
+        $this->templates = $templates;
         $this->session = $session;
     }
 
@@ -85,11 +85,11 @@ class ResponseFactory
      */
     public function view(string $template, array $data = [], int $status = 200, array $headers = []): ResponseInterface
     {
-        if ($this->viewEngine === null) {
-            throw new InvalidArgumentException('ViewEngine not set. Cannot render view responses.');
+        if ($this->templates === null) {
+            throw new InvalidArgumentException('No template renderer is set. Cannot render view responses.');
         }
 
-        $html = $this->viewEngine->render($template, $data);
+        $html = $this->templates->render($template, $data);
 
         return new HtmlResponse($html, $status, $headers);
     }
@@ -220,7 +220,7 @@ class ResponseFactory
      */
     public function notFound(string $message = 'Not Found'): ResponseInterface
     {
-        if ($this->viewEngine !== null) {
+        if ($this->templates !== null) {
             try {
                 return $this->view('errors.404', ['message' => $message], 404);
             } catch (\Exception $e) {
@@ -228,7 +228,7 @@ class ResponseFactory
             }
         }
 
-        return $this->html("<h1>404 Not Found</h1><p>{$message}</p>", 404);
+        return $this->html('<h1>404 Not Found</h1><p>' . htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</p>', 404);
     }
 
     /**
@@ -236,7 +236,7 @@ class ResponseFactory
      */
     public function forbidden(string $message = 'Forbidden'): ResponseInterface
     {
-        if ($this->viewEngine !== null) {
+        if ($this->templates !== null) {
             try {
                 return $this->view('errors.403', ['message' => $message], 403);
             } catch (\Exception $e) {
@@ -244,7 +244,7 @@ class ResponseFactory
             }
         }
 
-        return $this->html("<h1>403 Forbidden</h1><p>{$message}</p>", 403);
+        return $this->html('<h1>403 Forbidden</h1><p>' . htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</p>', 403);
     }
 
     /**
@@ -252,7 +252,7 @@ class ResponseFactory
      */
     public function serverError(string $message = 'Internal Server Error'): ResponseInterface
     {
-        if ($this->viewEngine !== null) {
+        if ($this->templates !== null) {
             try {
                 return $this->view('errors.500', ['message' => $message], 500);
             } catch (\Exception $e) {
@@ -260,7 +260,7 @@ class ResponseFactory
             }
         }
 
-        return $this->html("<h1>500 Internal Server Error</h1><p>{$message}</p>", 500);
+        return $this->html('<h1>500 Internal Server Error</h1><p>' . htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</p>', 500);
     }
 
     /**
@@ -268,7 +268,7 @@ class ResponseFactory
      */
     public function unauthorized(string $message = 'Unauthorized'): ResponseInterface
     {
-        return $this->html("<h1>401 Unauthorized</h1><p>{$message}</p>", 401);
+        return $this->html('<h1>401 Unauthorized</h1><p>' . htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '</p>', 401);
     }
 
     /**
@@ -342,11 +342,11 @@ class ResponseFactory
     }
 
     /**
-     * Set the view engine for rendering views
+     * Set the template renderer used by view responses.
      */
-    public function setViewEngine(ViewEngine $viewEngine): void
+    public function setTemplateRenderer(TemplateRenderer $templates): void
     {
-        $this->viewEngine = $viewEngine;
+        $this->templates = $templates;
     }
 
     /**
@@ -358,10 +358,10 @@ class ResponseFactory
     }
 
     /**
-     * Get the current view engine
+     * Get the template renderer used by view responses.
      */
-    public function getViewEngine(): ?ViewEngine
+    public function getTemplateRenderer(): ?TemplateRenderer
     {
-        return $this->viewEngine;
+        return $this->templates;
     }
 }
