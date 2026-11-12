@@ -18,8 +18,13 @@ class ValidationExceptionHandler implements ExceptionHandlerInterface
 {
     use ExceptionHandlerTrait;
 
+    /**
+     * @param bool $debug Include the exception class and location in JSON errors.
+     *                    The host passes its configured debug flag.
+     */
     public function __construct(
         private readonly ResponseFactory $responseFactory,
+        private readonly bool $debug = false,
     ) {}
 
     public function canHandle(Throwable $exception): bool
@@ -53,7 +58,7 @@ class ValidationExceptionHandler implements ExceptionHandlerInterface
             'errors' => $this->errors($exception)
         ];
 
-        if ($this->isDebugMode()) {
+        if ($this->debug) {
             $data['debug'] = [
                 'exception' => get_class($exception),
                 'file' => $exception->getFile(),

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.0 – 2026-11-12
+
+- **Breaking:** `ValidationExceptionHandler` takes `bool $debug` in its
+  constructor; `ExceptionHandlerTrait::isDebugMode()`, which read `APP_DEBUG`
+  from the process environment, is removed.
+
 ## 0.11.1 – 2026-11-12
 
 ### Fixed

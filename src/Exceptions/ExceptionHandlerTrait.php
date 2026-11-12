@@ -54,22 +54,4 @@ trait ExceptionHandlerTrait
 
         return false;
     }
-
-    /**
-     * Check if debug mode is enabled.
-     */
-    protected function isDebugMode(): bool
-    {
-        // Check environment variable
-        $appDebug = $_ENV['APP_DEBUG'] ?? $_SERVER['APP_DEBUG'] ?? getenv('APP_DEBUG');
-        
-        if ($appDebug !== false) {
-            return filter_var($appDebug, FILTER_VALIDATE_BOOLEAN);
-        }
-
-        // Default to false in production environment
-        $appEnv = $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? getenv('APP_ENV') ?: 'production';
-        
-        return $appEnv === 'local' || $appEnv === 'development';
-    }
 }
