@@ -5,9 +5,9 @@
   "license": "MIT",
   "require": {
     "php": "^8.2",
-    "denosyscore/http": "^0.17",
-    "denosyscore/session": "^0.17",
-    "denosyscore/validation": "^0.17"
+    "denosyscore/http": "^0.18",
+    "denosyscore/session": "^0.18",
+    "denosyscore/validation": "^0.18"
   },
   "config": {
     "sort-packages": true
